@@ -17,19 +17,19 @@ class EncryptorTest < Minitest::Test
 
     assert_equal "hello world", @encryptor.message
     assert_equal "02715", @encryptor.key
-    assert_equal "040895", @encryptor.date
+    assert_equal "1025", @encryptor.offset
     assert_equal expected, @encryptor.character_set
   end
 
   def test_it_can_create_offsets
-    assert_equal "1025", @encryptor.create_offsets
+    assert_equal "1025", @encryptor.create_offsets("040895")
   end
 
   def test_it_can_create_shift
-    assert_equal 3, @encryptor.create_shift("02715", "1025", :A)
-    assert_equal 73, @encryptor.create_shift("02715", "1025", :C)
-    assert_equal 27, @encryptor.create_shift("02715", "1025", :B)
-    assert_equal 20, @encryptor.create_shift("02715", "1025", :D)
+    assert_equal 3, @encryptor.create_shift(:A)
+    assert_equal 73, @encryptor.create_shift(:C)
+    assert_equal 27, @encryptor.create_shift(:B)
+    assert_equal 20, @encryptor.create_shift(:D)
   end
 
   def test_it_can_find_valid_index
@@ -39,17 +39,15 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_has_all_shift_types
-    assert_equal "k", @encryptor.a_shift("02715", "1025", "h")
-    assert_equal "e", @encryptor.b_shift("02715", "1025", "e")
-    assert_equal "d", @encryptor.c_shift("02715", "1025", "l")
-    assert_equal "e", @encryptor.d_shift("02715", "1025", "l")
-    assert_equal "r", @encryptor.a_shift("02715", "1025", "o")
-    assert_equal " ", @encryptor.b_shift("02715", "1025", " ")
+    assert_equal "k", @encryptor.a_shift("h")
+    assert_equal "e", @encryptor.b_shift("e")
+    assert_equal "d", @encryptor.c_shift("l")
+    assert_equal "e", @encryptor.d_shift("l")
+    assert_equal "r", @encryptor.a_shift("o")
+    assert_equal " ", @encryptor.b_shift(" ")
   end
 
-  # def test_it_can_encrypt
-  #   assert_equal "keder ohulw", @encryptor.encrypt
-  # end
-
-
+  def test_it_can_encrypt
+    assert_equal "keder ohulw", @encryptor.encrypt
+  end
 end

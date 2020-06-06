@@ -2,22 +2,22 @@
 class Encryptor
   attr_reader :message,
               :key,
-              :date,
+              :offset,
               :character_set
 
   def initialize(message, key, date)
     @message = message
     @key = key
-    @date = date
+    @offset = create_offsets(date)
     @character_set = ("a".."z").to_a << " "
   end
 
-  def create_offsets
+  def create_offsets(date)
     squared_date = date.to_i ** 2
     squared_date.to_s[-4..-1]
   end
 
-  def create_shift(key, offset, shift_type)
+  def create_shift(shift_type)
     if shift_type == :A
       key[0..1].to_i + offset[0].to_i
     elsif shift_type == :B
@@ -37,38 +37,35 @@ class Encryptor
     new_value
   end
 
-  def a_shift(key, offset, character)
-    shift_value = create_shift(key, offset, :A)
+  def a_shift(character)
+    shift_value = create_shift(:A)
     character_index = character_set.index(character)
     new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
   end
 
-  def b_shift(key, offset, character)
-    shift_value = create_shift(key, offset, :B)
+  def b_shift(character)
+    shift_value = create_shift(:B)
     character_index = character_set.index(character)
     new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
   end
 
-  def c_shift(key, offset, character)
-    shift_value = create_shift(key, offset, :C)
+  def c_shift(character)
+    shift_value = create_shift(:C)
     character_index = character_set.index(character)
     new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
   end
 
-  def d_shift(key, offset, character)
-    shift_value = create_shift(key, offset, :D)
+  def d_shift(character)
+    shift_value = create_shift(:D)
     character_index = character_set.index(character)
     new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
   end
 
+  def encrypt
 
-
-  # A offset: The first digit (1)
-  # B offset: The second digit (0)
-  # C offset: The third digit (2)
-  # D offset: The fourth digit (5)
+  end
 end
