@@ -9,4 +9,8 @@ class Encryptor
     @key = key
     @date = date
   end
+
+  def encrypt
+    
+  end
 end

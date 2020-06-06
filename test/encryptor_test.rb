@@ -17,4 +17,8 @@ class EncryptorTest < Minitest::Test
     assert_equal "02715", @encryptor.key
     assert_equal "060620", @encryptor.date
   end
+
+  def test_it_can_encrypt
+    assert_equal "keder ohulw", @encryptor.encrypt
+  end
 end
