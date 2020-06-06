@@ -29,10 +29,39 @@ class Encryptor
     end
   end
 
+  def find_valid_index(index, shift)
+    new_value = index + shift
+    while new_value > 26
+      new_value -= 27
+    end
+    new_value
+  end
+
   def a_shift(key, offset, character)
     shift_value = create_shift(key, offset, :A)
     character_index = character_set.index(character)
-    new_index = character_index + shift_value
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
+
+  def b_shift(key, offset, character)
+    shift_value = create_shift(key, offset, :B)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
+
+  def c_shift(key, offset, character)
+    shift_value = create_shift(key, offset, :C)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
+
+  def d_shift(key, offset, character)
+    shift_value = create_shift(key, offset, :D)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
   end
 

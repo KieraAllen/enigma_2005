@@ -32,8 +32,19 @@ class EncryptorTest < Minitest::Test
     assert_equal 20, @encryptor.create_shift("02715", "1025", :D)
   end
 
-  def test_it_has_an_a_shift
+  def test_it_can_find_valid_index
+    index = 4
+    shift = 26
+    assert_equal 3, @encryptor.find_valid_index(index, shift)
+  end
+
+  def test_it_has_all_shift_types
     assert_equal "k", @encryptor.a_shift("02715", "1025", "h")
+    assert_equal "e", @encryptor.b_shift("02715", "1025", "e")
+    assert_equal "d", @encryptor.c_shift("02715", "1025", "l")
+    assert_equal "e", @encryptor.d_shift("02715", "1025", "l")
+    assert_equal "r", @encryptor.a_shift("02715", "1025", "o")
+    assert_equal " ", @encryptor.b_shift("02715", "1025", " ")
   end
 
   # def test_it_can_encrypt
