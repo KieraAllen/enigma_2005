@@ -2,12 +2,14 @@
 class Encryptor
   attr_reader :message,
               :key,
-              :date
+              :date,
+              :character_set
 
   def initialize(message, key, date)
     @message = message
     @key = key
     @date = date
+    @character_set = ("a".."z").to_a << " "
   end
 
   def create_offsets
@@ -27,8 +29,9 @@ class Encryptor
     end
   end
 
-  # def a_shift(key, offset, character)
-  # end
+  def a_shift(key, offset, character)
+    shift_value = create_shift(key, offset, :A)
+  end
 
 
 

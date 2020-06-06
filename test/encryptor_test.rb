@@ -13,9 +13,12 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_read_attributes
+    expected = ("a".."z").to_a << " "
+
     assert_equal "hello world", @encryptor.message
     assert_equal "02715", @encryptor.key
     assert_equal "040895", @encryptor.date
+    assert_equal expected, @encryptor.character_set
   end
 
   def test_it_can_create_offsets
@@ -29,9 +32,10 @@ class EncryptorTest < Minitest::Test
     assert_equal 20, @encryptor.create_shift("02715", "1025", :D)
   end
 
-  # def test_it_has_an_a_shift
-  #   assert_equal "k", @encryptor.a_shift("02715", "1025", "h")
-  # end
+  def test_it_has_an_a_shift
+    skip
+    assert_equal "k", @encryptor.a_shift("02715", "1025", "h")
+  end
 
   # def test_it_can_encrypt
   #   assert_equal "keder ohulw", @encryptor.encrypt
