@@ -31,6 +31,9 @@ class Encryptor
 
   def a_shift(key, offset, character)
     shift_value = create_shift(key, offset, :A)
+    character_index = character_set.index(character)
+    new_index = character_index + shift_value
+    character_set[new_index]
   end
 
 

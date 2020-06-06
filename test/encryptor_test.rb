@@ -33,7 +33,6 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_has_an_a_shift
-    skip
     assert_equal "k", @encryptor.a_shift("02715", "1025", "h")
   end
 
