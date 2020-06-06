@@ -66,6 +66,21 @@ class Encryptor
   end
 
   def encrypt
-
+    # take the message and separate each character into
+    # separate elements in an array
+    separated_message = message.split("")
+    encrypted_message = []
+    separated_message.each_with_index do |character, index|
+      if index % 4 == 0
+        encrypted_message << a_shift(character)
+      elsif index % 4 == 1
+        encrypted_message << b_shift(character)
+      elsif index % 4 == 2
+        encrypted_message << c_shift(character)
+      else
+        encrypted_message << d_shift(character)
+      end
+    end
+    encrypted_message.join
   end
 end
