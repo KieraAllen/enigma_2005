@@ -23,6 +23,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_decrypt
+    skip
     expected = {
         decryption: "hello world",
         key: "02715",
