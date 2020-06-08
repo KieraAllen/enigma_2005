@@ -35,15 +35,19 @@ class DecryptorTest < Minitest::Test
   def test_it_can_find_valid_index
     index = 4
     shift = 26
-    assert_equal 3, @decryptor.find_valid_index(index, shift)
+    assert_equal 5, @decryptor.find_valid_index(index, shift)
   end
 
   def test_it_has_all_shift_types
-    assert_equal "k", @decryptor.a_shift("h")
+    assert_equal "h", @decryptor.a_shift("k")
     assert_equal "e", @decryptor.b_shift("e")
-    assert_equal "d", @decryptor.c_shift("l")
-    assert_equal "e", @decryptor.d_shift("l")
-    assert_equal "r", @decryptor.a_shift("o")
+    assert_equal "l", @decryptor.c_shift("d")
+    assert_equal "l", @decryptor.d_shift("e")
+    assert_equal "o", @decryptor.a_shift("r")
     assert_equal " ", @decryptor.b_shift(" ")
+  end
+
+  def test_it_can_decrypt_characters
+    assert_equal "hello world", @decryptor.decrypt
   end
 end

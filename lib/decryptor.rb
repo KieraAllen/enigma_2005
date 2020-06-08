@@ -30,9 +30,9 @@ class Decryptor
   end
 
   def find_valid_index(index, shift)
-    new_value = index + shift
-    while new_value > 26
-      new_value -= 27
+    new_value = index - shift
+    while new_value < 0
+      new_value += 27
     end
     new_value
   end
@@ -43,7 +43,7 @@ class Decryptor
     new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
   end
-  
+
   def b_shift(character)
     shift_value = create_shift(:B)
     character_index = character_set.index(character)
@@ -63,5 +63,22 @@ class Decryptor
     character_index = character_set.index(character)
     new_index = find_valid_index(character_index, shift_value)
     character_set[new_index]
+  end
+
+  def decrypt
+    separated_message = message.split("")
+    decrypted_message = []
+    separated_message.each_with_index do |character, index|
+      if index % 4 == 0
+        decrypted_message << a_shift(character)
+      elsif index % 4 == 1
+        decrypted_message << b_shift(character)
+      elsif index % 4 == 2
+        decrypted_message << c_shift(character)
+      else
+        decrypted_message << d_shift(character)
+      end
+    end
+    decrypted_message.join
   end
 end
