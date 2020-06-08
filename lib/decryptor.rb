@@ -36,4 +36,32 @@ class Decryptor
     end
     new_value
   end
+
+  def a_shift(character)
+    shift_value = create_shift(:A)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
+  
+  def b_shift(character)
+    shift_value = create_shift(:B)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
+
+  def c_shift(character)
+    shift_value = create_shift(:C)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
+
+  def d_shift(character)
+    shift_value = create_shift(:D)
+    character_index = character_set.index(character)
+    new_index = find_valid_index(character_index, shift_value)
+    character_set[new_index]
+  end
 end

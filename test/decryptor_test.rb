@@ -37,4 +37,13 @@ class DecryptorTest < Minitest::Test
     shift = 26
     assert_equal 3, @decryptor.find_valid_index(index, shift)
   end
+
+  def test_it_has_all_shift_types
+    assert_equal "k", @decryptor.a_shift("h")
+    assert_equal "e", @decryptor.b_shift("e")
+    assert_equal "d", @decryptor.c_shift("l")
+    assert_equal "e", @decryptor.d_shift("l")
+    assert_equal "r", @decryptor.a_shift("o")
+    assert_equal " ", @decryptor.b_shift(" ")
+  end
 end
