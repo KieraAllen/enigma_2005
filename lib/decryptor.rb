@@ -1,4 +1,8 @@
 class Decryptor
+  attr_reader :message,
+              :key,
+              :date,
+              :character_set
 
   def initialize(message, key, date)
     @message = message
