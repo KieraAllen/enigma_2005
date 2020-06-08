@@ -1,4 +1,4 @@
-## [Enigma](https://backend.turing.io/module1/projects/enigma/index) (codename: )<br/>
+## [Enigma](https://backend.turing.io/module1/projects/enigma/index) (codename: _Winnie_)<br/>
 Created by [Kiera Allen](https://github.com/KieraAllen)
 
 #### Week 6 Independent Project (2005 BE)
