@@ -28,4 +28,12 @@ class Decryptor
       key[3..4].to_i + offset[3].to_i
     end
   end
+
+  def find_valid_index(index, shift)
+    new_value = index + shift
+    while new_value > 26
+      new_value -= 27
+    end
+    new_value
+  end
 end

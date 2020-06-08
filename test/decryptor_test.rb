@@ -31,4 +31,10 @@ class DecryptorTest < Minitest::Test
     assert_equal 27, @decryptor.create_shift(:B)
     assert_equal 20, @decryptor.create_shift(:D)
   end
+
+  def test_it_can_find_valid_index
+    index = 4
+    shift = 26
+    assert_equal 3, @decryptor.find_valid_index(index, shift)
+  end
 end
