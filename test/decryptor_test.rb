@@ -20,4 +20,8 @@ class DecryptorTest < Minitest::Test
       assert_equal "040895", @decryptor.date
       assert_equal expected, @decryptor.character_set
   end
+
+  def test_it_can_create_offsets
+    assert_equal "1025", @decryptor.create_offsets("040895")
+  end
 end
