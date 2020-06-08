@@ -35,7 +35,7 @@ class EnigmaTest < Minitest::Test
   # def test_it_can_encrypt_with_key
   #   # encrypt a message with a key (uses today's date)
   #   # encrypted = enigma.encrypt("hello world", "02715")
-  #   # encryption hash will replace empty has below
+  #   # encryption hash will replace empty hash below
   #   expected = {}
   #   assert_equal expected, @enigma.encrypt("hello world", "02715")
   #
