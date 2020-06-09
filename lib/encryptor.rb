@@ -6,7 +6,7 @@ class Encryptor
               :character_set
 
   def initialize(message, key, date)
-    @message = message
+    @message = message.downcase
     @key = key
     @offset = create_offsets(date)
     @character_set = ("a".."z").to_a << " "
@@ -71,6 +71,10 @@ class Encryptor
     separated_message = message.split("")
     encrypted_message = []
     separated_message.each_with_index do |character, index|
+      if !character_set.include?(character)
+        encrypted_message << character
+        next
+      end
       if index % 4 == 0
         encrypted_message << a_shift(character)
       elsif index % 4 == 1
