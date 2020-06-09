@@ -3,20 +3,12 @@ require './lib/enigma'
 
 enigma = Enigma.new
 
-ARGV == ["message_file", "encrypted_file", "key", "date"]
 message_file = File.open(ARGV[0], "r")
 encrypted_file = File.open(ARGV[1], "w")
-key = ARGV[2] if ARGV[2]
-date = ARGV[3] if ARGV[3]
 
 message = message_file.read.chomp
-if key && date
-  encryption = enigma.encrypt(message, key, date)
-elsif key
-  encryption = enigma.encrypt(message, key)
-else
-  encryption = enigma.encrypt(message)
-end
+
+encryption = enigma.encrypt(message)
 
 encrypted_file.write(encryption[:encryption])
 
