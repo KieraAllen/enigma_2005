@@ -1,4 +1,3 @@
-# we need an Encryptor class that encrypts
 class Encryptor
   attr_reader :message,
               :key,
@@ -66,8 +65,6 @@ class Encryptor
   end
 
   def encrypt
-    # take the message and separate each character into
-    # separate elements in an array
     separated_message = message.split("")
     encrypted_message = []
     separated_message.each_with_index do |character, index|
