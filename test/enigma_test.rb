@@ -23,7 +23,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_decrypt
-    skip
     expected = {
         decryption: "hello world",
         key: "02715",
@@ -33,15 +32,19 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_get_todays_date
+    Date.stubs(:today).returns(Date.new(2020,6,8))
+
     assert_equal "060820", @enigma.todays_date
   end
 
   def test_it_can_encrypt_with_key
-    skip
-    # encrypt a message with a key (uses today's date)
-    # encrypted = enigma.encrypt("hello world", "02715")
-    # encryption hash will replace empty hash below
-    expected = {}
+    @enigma.stubs(:todays_date).returns("060820")
+
+    expected = {
+      encryption: "lib sdmcvpu",
+      key: "02715",
+      date: "060820"
+    }
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
