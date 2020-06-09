@@ -1,8 +1,9 @@
 require './lib/encryptor'
+require 'date'
 
 class Enigma
 
-  def encrypt(message, key, date)
+  def encrypt(message, key, date = todays_date)
     encryptor = Encryptor.new(message, key, date)
     {
       encryption: encryptor.encrypt,
@@ -18,5 +19,10 @@ class Enigma
       key: key,
       date: date
     }
+  end
+
+  def todays_date
+    today = Date.today
+    today.strftime("%m%d%y")
   end
 end
