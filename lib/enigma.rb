@@ -14,8 +14,8 @@ class Enigma
     }
   end
 
-  def decrypt(message, key, date = todays_date)
-    decryptor = Decryptor.new(message, key, date)
+  def decrypt(cyphertext, key, date = todays_date)
+    decryptor = Decryptor.new(cyphertext, key, date)
     {
       decryption: decryptor.decrypt,
       key: key,
