@@ -1,10 +1,11 @@
 require './lib/encryptor'
 require './lib/decryptor'
+require './lib/key'
 require 'date'
 
 class Enigma
 
-  def encrypt(message, key, date = todays_date)
+  def encrypt(message, key = generate_random_key, date = todays_date)
     encryptor = Encryptor.new(message, key, date)
     {
       encryption: encryptor.encrypt,
@@ -25,5 +26,9 @@ class Enigma
   def todays_date
     today = Date.today
     today.strftime("%m%d%y")
+  end
+
+  def generate_random_key
+    Key.generate
   end
 end

@@ -58,4 +58,19 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, @enigma.decrypt("lib sdmcvpu", "02715")
   end
+
+  def test_it_can_generate_random_key
+    assert_instance_of String, @enigma.generate_random_key
+    assert_equal 5, @enigma.generate_random_key.length
+  end
+
+  def test_it_can_encrypt_with_random_key
+    assert_instance_of Hash, @enigma.encrypt("hello world")
+    assert_instance_of String, @enigma.encrypt("hello world")[:encryption]
+    assert_equal 11, @enigma.encrypt("hello world")[:encryption].length
+    assert_instance_of String, @enigma.encrypt("hello world")[:key]
+    assert_equal 5, @enigma.encrypt("hello world")[:key].length
+    assert_instance_of String, @enigma.encrypt("hello world")[:date]
+    assert_equal 6, @enigma.encrypt("hello world")[:date].length
+  end
 end
