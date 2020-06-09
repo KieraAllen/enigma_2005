@@ -5,7 +5,7 @@ require './lib/encryptor'
 class EncryptorTest < Minitest::Test
 
   def setup
-    @encryptor = Encryptor.new("hello world", "02715", "040895")
+    @encryptor = Encryptor.new("hello world!", "02715", "040895")
   end
 
   def test_it_exists
@@ -15,7 +15,7 @@ class EncryptorTest < Minitest::Test
   def test_it_can_read_attributes
     expected = ("a".."z").to_a << " "
 
-    assert_equal "hello world", @encryptor.message
+    assert_equal "hello world!", @encryptor.message
     assert_equal "02715", @encryptor.key
     assert_equal "1025", @encryptor.offset
     assert_equal expected, @encryptor.character_set
@@ -48,6 +48,6 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_encrypt
-    assert_equal "keder ohulw", @encryptor.encrypt
+    assert_equal "keder ohulw!", @encryptor.encrypt
   end
 end

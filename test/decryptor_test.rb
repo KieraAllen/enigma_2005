@@ -5,7 +5,7 @@ require './lib/decryptor'
 class DecryptorTest < Minitest::Test
 
   def setup
-    @decryptor = Decryptor.new("keder ohulw", "02715", "040895")
+    @decryptor = Decryptor.new("keder oHulw!", "02715", "040895")
   end
 
   def test_it_exists
@@ -15,7 +15,7 @@ class DecryptorTest < Minitest::Test
   def test_it_can_read_attributes
       expected = ("a".."z").to_a << " "
 
-      assert_equal "keder ohulw", @decryptor.message
+      assert_equal "keder ohulw!", @decryptor.message
       assert_equal "02715", @decryptor.key
       assert_equal "1025", @decryptor.offset
       assert_equal expected, @decryptor.character_set
@@ -48,6 +48,6 @@ class DecryptorTest < Minitest::Test
   end
 
   def test_it_can_decrypt_characters
-    assert_equal "hello world", @decryptor.decrypt
+    assert_equal "hello world!", @decryptor.decrypt
   end
 end
