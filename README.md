@@ -14,7 +14,7 @@ Use Ruby to build a tool for cracking an encryption algorithm.
 Based on [this rubric](https://backend.turing.io/module1/projects/enigma/rubric), this is how I assess the project:
 
 **Functionality** - *Meets Expectations*  
-Project includes `Enigma` Class with `encrypt` and `decrypt` methods successfully implemented. Encrypt/decrypt command line interfaces successfully implemented)  
+Project includes `Enigma` Class with `encrypt` and `decrypt` methods successfully implemented. Encrypt/decrypt command line interfaces successfully implemented  
 
 **Object Oriented Programming** - *Meets Expectations*  
 Project is broken into logical components that are appropriately encapsulated. No classes are unreasonably small or large, or contain knowledge/information/behavior that they shouldn’t know about. Student can articulate the single responsibilities of the various components.
