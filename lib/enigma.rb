@@ -13,7 +13,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key, date = todays_date)
     decryptor = Decryptor.new(message, key, date)
     {
       decryption: decryptor.decrypt,
