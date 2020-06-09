@@ -58,14 +58,4 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, @enigma.decrypt("lib sdmcvpu", "02715")
   end
-
-
-  #   # #decrypt a message with a key (uses today's date)
-  #   # pry(main) > enigma.decrypt(encrypted[:encryption], "02715")
-  #   # #=> # decryption hash here
-  #   #
-  #   # # encrypt a message (generates random key and uses today's date)
-  #   # pry(main)> enigma.encrypt("hello world")
-  #   # #=> # encryption hash here
-  # end
 end
